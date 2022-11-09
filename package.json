@@ -1,0 +1,22 @@
+{
+  "name": "apeclub",
+  "version": "1.0.0",
+  "description": "This is the Capstone project for The Imposter Syndrome Team!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HeadbandDandy/apeClub.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HeadbandDandy/apeClub/issues"
+  },
+  "homepage": "https://github.com/HeadbandDandy/apeClub#readme",
+  "dependencies": {
+    "concurrently": "^7.5.0"
+  }
+}

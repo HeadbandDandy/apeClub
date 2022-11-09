@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/HeadbandDandy/apeClub#readme",
   "dependencies": {
-    "concurrently": "^7.5.0"
+    "concurrently": "7.5.0"
   }
 }

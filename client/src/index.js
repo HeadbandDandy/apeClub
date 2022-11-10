@@ -1,43 +1,19 @@
-import React from 'react';
+import React, { createContext } from 'react';
 import ReactDOM from 'react-dom/client';
-import Home from './components/home';
-import SignIn from './components/signIn';
-import Exercises from './components/exercises';
-import UpperBody from './components/upperbody';
-import Register from './components/register';
+import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {createBrowserRouter, RouterProvider, Route} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 import './App.css';
 
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <Home />
-  },
-  {
-    path: '/signIn',
-    element: <SignIn />
-  },
-  {
-    path: '/exercises',
-    element: <Exercises />
-  },
-  {
-    path: '/upperbody',
-    element: <UpperBody />
-  },
-  {
-    path: '/register',
-    element: <Register />
-  }
-]);
+export const ExerciseContext = createContext();
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
+  // <React.StrictMode>
+  //   <App />
+  //   {/* <RouterProvider router={router} /> */}
+  // </React.StrictMode>
+  <App />
 );
 
 reportWebVitals();

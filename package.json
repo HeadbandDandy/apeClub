@@ -1,5 +1,5 @@
 {
-  "name": "apeclub",
+  "name": "ape-club",
   "version": "1.0.0",
   "description": "This is the Capstone project for The Imposter Syndrome Team!",
   "main": "index.js",
@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/HeadbandDandy/apeClub#readme",
   "dependencies": {
-    "concurrently": "^7.5.0"
+    "concurrently": "7.5.0"
   }
 }

@@ -48,8 +48,8 @@ code {
 }
 
 .large-logo {
-  height: 40vh;
-  width: 37vh;
+  height: 30vh;
+  width: 27vh;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 10px;
@@ -86,15 +86,23 @@ input[type=password] {
   font-size: 20px;
 }
 
-#username-form-field {
+.form-field {
   margin-top: 10px;
   animation: fadeInLeft ease 2s;
   animation-iteration-count: 1;
 }
 
-#first-name-form-field {
-  margin-top: 10px;
+.sub-form-field {
+  margin-top: 20px;
+}
+
+.fade-left {
   animation: fadeInLeft ease 2s;
+  animation-iteration-count: 1;
+}
+
+.fade-right {
+  animation: fadeInRight ease 2s;
   animation-iteration-count: 1;
 }
 

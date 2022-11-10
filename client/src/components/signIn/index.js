@@ -5,8 +5,8 @@ const SignIn = () => {
     <div className='menu-screen'>
       <img src={logo} className='logo' alt='Muscular ape with hands on hips.'></img>
       <form className='signIn-form'>
-        <input type='text' name='userName' id='username-form-field'/>
-        <input type='password' name='password' id='password-form-field' />
+        <input className='form-field mt-3' type='text' name='userName' placeholder='Username' id='username-form-field'/>
+        <input className='form-field' type='password' name='password' placeholder='Password' id='password-form-field' />
       </form>
       <div className='signIn-btns'>
         <button className="btn btn-light btn-lg home-btn home-btn-regular signIn-btn-1">SIGN IN</button>

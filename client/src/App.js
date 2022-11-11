@@ -4,6 +4,7 @@ import SignIn from './components/signIn';
 import Exercises from './components/exercises';
 import UpperBody from './components/upperbody';
 import Register from './components/register';
+import Shoulders from './components/shoulders';
 import { createBrowserRouter, RouterProvider, Route} from 'react-router-dom';
 import { ExerciseContext } from './index';
 import axios from 'axios';
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
   {
     path: '/register',
     element: <Register />
+  },
+  {
+    path: '/shoulders',
+    element: <Shoulders />
   }
 ]);
 
@@ -45,7 +50,6 @@ function App() {
 
   const getExercises = () => {
     axios.request(options).then(function (response) {
-      console.log('Exercise Data: ', response.data);
       setExercises(response.data);
     }).catch(function (error) {
       console.error(error);

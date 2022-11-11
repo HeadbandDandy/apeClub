@@ -12,7 +12,7 @@ const typeDefs = gql`
     _id: ID
     name: String
     userId: String
-    exercises: []
+    exercises: [Int]
   }
 
   type Auth {

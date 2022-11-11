@@ -13,7 +13,11 @@ const workoutSchema = new Schema(
             required: true,
             unique: false
         },
-        exercises:[]
+        exercises: {
+            type: Array,
+            required: true,
+            unique: false
+        }
     }
 
 )

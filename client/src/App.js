@@ -1,22 +1,72 @@
-import React from 'react';
-import { Route, Routes } from 'react-router-dom';
-import { Box } from '@mui/material';
+import React, { useState, useEffect } from 'react';
+import Home from './components/home';
+import SignIn from './components/signIn';
+import Exercises from './components/exercises';
+import UpperBody from './components/upperbody';
+import Register from './components/register';
+import Shoulders from './components/shoulders';
+import { createBrowserRouter, RouterProvider, Route} from 'react-router-dom';
+import { ExerciseContext } from './index';
+import axios from 'axios';
 
-import './App.css';
-import ExerciseDetail from './pages/ExerciseDetail';
-import Home from './pages/Home';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Home />
+  },
+  {
+    path: '/signIn',
+    element: <SignIn />
+  },
+  {
+    path: '/exercises',
+    element: <Exercises />
+  },
+  {
+    path: '/upperbody',
+    element: <UpperBody />
+  },
+  {
+    path: '/register',
+    element: <Register />
+  },
+  {
+    path: '/shoulders',
+    element: <Shoulders />
+  }
+]);
 
-const App = () => (
-  <Box width="400px" sx={{ width: { xl: '1488px' } }} m="auto">
-    <Navbar />
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/exercise/:id" element={<ExerciseDetail />} />
-    </Routes>
-    <Footer />
-  </Box>
-);
+function App() {
+  const [exercises, setExercises] = useState([])
+
+  const options = {
+    method: 'GET',
+    url: 'https://exercisedb.p.rapidapi.com/exercises',
+    headers: {
+      'X-RapidAPI-Key': process.env.REACT_APP_EXERCISE_API,
+      'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com'
+    }
+  };
+
+  const getExercises = () => {
+    axios.request(options).then(function (response) {
+      setExercises(response.data);
+    }).catch(function (error) {
+      console.error(error);
+    });
+  };
+
+  useEffect(() => {
+    getExercises();
+  }, [])
+  
+  return (
+    <div className="App">
+      <ExerciseContext.Provider value={[ exercises, setExercises ]}>
+        <RouterProvider router={router} />
+      </ExerciseContext.Provider>
+    </div>
+  );
+}
 
 export default App;

@@ -13,13 +13,3 @@ root.render(
 );
 
 reportWebVitals();
-
-/* <RouterProvider router={router} /> 
- 0:"back"
-2:"chest"
-3:"lower arms"
-4:"lower legs"
-6:"shoulders"
-7:"upper arms"
-8:"upper legs"
-*/

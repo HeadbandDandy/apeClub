@@ -5,11 +5,10 @@ const SignIn = () => {
     <div className='menu-screen'>
       <img src={logo} className='large-logo' alt='Muscular ape with hands on hips.'></img>
       <form className='signIn-form mt-3'>
-        <input className='form-field' type='text' placeholder='First Name' name='firstName' id='first-name-form-field'/>
-        <input className='sub-form-field fade-right' type='text' name='lastName' placeholder='Last Name' id='last-name-form-field' />
-        <input className='sub-form-field fade-left' type='text' name='username' placeholder='Username' id='username-form-field' />
-        <input className='sub-form-field fade-right' type='password' name='password' placeholder='Password' id='pass-form-field' />
-        <input className='sub-form-field fade-left' type='password' name='passwordConfirmation' placeholder='Confirm Password ' id='pass-conf-form-field' />
+      <input className='sub-form-field fade-left' type='text' name='username' placeholder='Username' id='username-form-field' />
+        <input className='sub-form-field fade-right' type='text' name='email' placeholder='Email' id='email-form-field' />
+        <input className='sub-form-field fade-left' type='password' name='password' placeholder='Password' id='pass-form-field' />
+        <input className='sub-form-field fade-right' type='password' name='passwordConfirmation' placeholder='Confirm Password ' id='pass-conf-form-field' />
       </form>
       <div className='signIn-btns'>
         <button className="btn btn-light btn-lg home-btn home-btn-regular signIn-btn-1">SUBMIT</button>

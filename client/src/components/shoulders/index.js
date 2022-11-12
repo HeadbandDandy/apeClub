@@ -1,6 +1,11 @@
 import React, {useState, useEffect, useContext} from "react";
 import { ExerciseContext } from "../..";
 
+
+// below contains our boilerplate code for the rest of our components
+// below only changes needed are line 8, 13, 22, 26, and 43
+// add body part/section and format from there
+
 const Shoulders = () => {
     const [exercises, setExercises] = useContext(ExerciseContext);
     let [currentExercise, setCurrentExercise] = useState(0);

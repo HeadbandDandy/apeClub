@@ -10,4 +10,4 @@ const UpperBody = () => {
   )
 }
 
-export default UpperBody
+export default UpperBody;

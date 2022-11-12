@@ -3,6 +3,7 @@ import Home from './components/home';
 import SignIn from './components/signIn';
 import Exercises from './components/exercises';
 import UpperBody from './components/upperbody';
+import LowerBody from './components/lowerbody';
 import Register from './components/register';
 import Shoulders from './components/shoulders';
 import { createBrowserRouter, RouterProvider, Route} from 'react-router-dom';
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
   {
     path: '/upperbody',
     element: <UpperBody />
+  },
+  {
+    path: '/lowerbody',
+    element: <LowerBody />
   },
   {
     path: '/register',

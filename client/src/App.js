@@ -3,12 +3,22 @@ import Home from './components/home';
 import SignIn from './components/signIn';
 import Exercises from './components/exercises';
 import UpperBody from './components/upperbody';
-import LowerBody from './components/lowerbody';
 import Register from './components/register';
 import Shoulders from './components/shoulders';
 import { createBrowserRouter, RouterProvider, Route} from 'react-router-dom';
 import { ExerciseContext } from './index';
 import axios from 'axios';
+import LowerBody from './components/lowerbody';
+import Chest from './components/chest';
+import Back from './components/back';
+import Arms from './components/arms'
+import UpperLegs from './components/upperlegs'
+import LowerLegs from './components/lowerlegs'
+
+
+
+
+// below contains the browser routes linked to individual components.
 
 const router = createBrowserRouter([
   {
@@ -23,22 +33,48 @@ const router = createBrowserRouter([
     path: '/exercises',
     element: <Exercises />
   },
+
+  {
+    path: '/register',
+    element: <Register />
+  },
+
+// below contains upperbody pages/components
   {
     path: '/upperbody',
     element: <UpperBody />
+  },
+  
+  {
+    path: '/shoulders',
+    element: <Shoulders />
   },
   {
     path: '/lowerbody',
     element: <LowerBody />
   },
   {
-    path: '/register',
-    element: <Register />
+    path: '/chest',
+    element: <Chest />
   },
   {
-    path: '/shoulders',
-    element: <Shoulders />
+    path: 'back',
+    element: <Back />
+  },
+  {
+    path: '/arms',
+    element: <Arms />
+  },
+  // below contains lowerbody pages/components
+  {
+    path: '/upperlegs',
+    element: < UpperLegs />
+  },
+  {
+    path: '/lowerlegs',
+    element: < LowerLegs />
   }
+
 ]);
 
 function App() {

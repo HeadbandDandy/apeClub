@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Home from './components/home';
 import SignIn from './components/signIn';
-import Exercises from './components/exercises';
+import Exercises from './components/Exercises';
 import UpperBody from './components/upperbody';
 import Register from './components/register';
 import Shoulders from './components/shoulders';

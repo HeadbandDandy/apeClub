@@ -24,9 +24,21 @@ const resolvers = {
         .select('-__v -password')
         .populate('workouts')
     },
-
-
+    workouts: async () => {
+      return workout.find()
+        .select('-__v')
+    },
+    workoutsByUser: async (parent, { user_id }) => {
+      const params = user_id ? { user_id } : {}
+      return workout.find(params)
+        .select('-__v')
+    },
+    workout: async (parent, { _id }) => {
+      return workout.findOne()
+      .select('-__v')
+    }
   },
+
   Mutation: {
     addUser: async (parent, args) => {
       const user = await User.create(args);

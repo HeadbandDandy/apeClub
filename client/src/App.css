@@ -1,150 +1,282 @@
+html {
+  background-color: black;
+}
+
 body {
-    font-family: 'Josefin Sans';
-    background-color: #9b9697;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.menu-screen {
+  background-color: black;
+  padding-top: 10vh;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.upper-body-menu {
+  padding-top: 20vh;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.App {
+  text-align: center;
+  background-color: black;
+}
+
+.logo {
+  height: 40vh;
+  width: 30vh;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+}
+
+.large-logo {
+  height: 30vh;
+  width: 27vh;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+}
+
+input[type=text] {
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid #4D4D4D;
+  text-align: center;
+  color: white;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 500px;
+  font-size: 20px;
+}
+
+input[type=password] {
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid #4D4D4D;
+  text-align: center;
+  color: white;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 500px;
+  font-size: 20px;
+}
+
+.form-field {
+  margin-top: 10px;
+  animation: fadeInLeft ease 2s;
+  animation-iteration-count: 1;
+}
+
+.sub-form-field {
+  margin-top: 20px;
+}
+
+.fade-left {
+  animation: fadeInLeft ease 2s;
+  animation-iteration-count: 1;
+}
+
+.fade-right {
+  animation: fadeInRight ease 2s;
+  animation-iteration-count: 1;
+}
+
+#password-form-field {
+  margin-top: 20px;
+  margin-bottom: 25px;
+  animation: fadeInRight ease 2s;
+  animation-iteration-count: 1;
+}
+
+textarea:hover, 
+input:hover, 
+textarea:active, 
+input:active, 
+textarea:focus, 
+input:focus,
+button:focus,
+button:active,
+button:hover,
+label:focus,
+.btn:active,
+.btn.active
+{
+    outline:0px !important;
+    -webkit-appearance:none !important;
+    box-shadow: none !important;
+}
+
+.signIn-btns {
+  display: flex;
+  width: 80%;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: space-between;
+  column-gap: 10px;
+}
+
+.signIn-btn-1 {
+  max-width: 245px;
+  animation: home-btn-fade-in ease 3s;
+  animation-iteration-count: 1;
+}
+
+.signIn-btn-2 {
+  max-width: 245px;
+  animation: home-btn-fade-in ease 3s;
+  animation-iteration-count: 1;
+}
+
+.signIn-btn-3 {
+  max-width: 500px !important;
+  animation: home-btn-fade-in ease 3s;
+  animation-iteration-count: 1;
+}
+
+.go-back-btn:hover {
+  border-color: #6C757D !important;
+  border-width: 3px;
+  color: #6C757D !important;
+  background-color: black !important;
+}
+
+.register-btn:hover {
+  border-color: #0DCAF0 !important;
+  border-width: 3px;
+  color: #0DCAF0 !important;
+  background-color: black !important;
+}
+
+.signIn-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.home-btn {
+  margin-top: 25px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 500px;
+}
+
+.home-btn-1 {
+  animation: home-btn-fade-in ease 1s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+.home-btn-2 {
+  animation: home-btn-fade-in ease 2s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+.home-btn-3 {
+  animation: home-btn-fade-in ease 3s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+.home-btn-4 {
+  animation: home-btn-fade-in ease 4s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+.home-btn-5 {
+  animation: home-btn-fade-in ease 5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+.home-btn-6 {
+  animation: home-btn-fade-in ease 6s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+.home-btn-regular:hover {
+  color: #F8F9FA !important;
+  border: solid 3px #F8F9FA !important;
+  background-color: black !important;
+}
+
+.home-btn-ape:hover {
+  color: #D43343 !important;
+  border: solid 3px #D43343 !important;
+  background-color: black !important;
+}
+
+/*----------Animations----------*/
+@keyframes home-btn-fade-in {
+  0% {
+      opacity: 0;
   }
-  
-  * {
-    padding: 0px;
-    margin: 0px;
-    box-sizing: border-box;
-  
+  100% {
+      opacity: 1;
+   }
+}
+
+@keyframes fadeInLeft {
+  0% {
+     opacity: 0;
+     transform: translateX(-200px);
   }
-  
-  ::-webkit-scrollbar {
-    width: 0px;
+  100% {
+     opacity: 1;
+     transform: translateX(0);
   }
-  
-  .right-arrow,
-  .left-arrow {
-    cursor: pointer;
-    background: transparent;
-    outline: none;
-    border: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #273bd3;
-    font-size: 25px;
-    border-radius: 4px;
-    position: absolute;
-    bottom: -20px;
-    right: 80px;
-    transform: scale(1, 1);
-    transition: 0.3s all ease-in-out;
+}   
+
+@keyframes fadeInRight {
+  0% {
+     opacity: 0;
+     transform: translateX(200px);
   }
-  
-  .right-arrow {
-    right: 140px;
+  100% {
+     opacity: 1;
+     transform: translateX(0);
   }
-  
-  .right-arrow:hover,
-  .left-arrow:hover {
-    transform: scale(1.3, 1.3);
-  }
-  
-  .react-horizontal-scrolling-menu--wrapper {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-  }
-  
-  .detail-image {
-    width: 729px;
-    height: 742px;
-  }
-  
-  .hero-banner-img {
-    position: absolute;
-    right: 40px;
-    top: 0px;
-    width: 700px;
-    height: 900px;
-    margin-top: -330px;
-  
-  }
-  
-  .exercise-card {
-    width: 400px;
-    height: 445px;
-    background: #fff;
-    border-top: 4px solid #273bd3;
-    border-bottom-left-radius: 20px;
-    text-decoration: none;
-    display: flex;
-    justify-content: space-between;
+}   
+
+/*----------Media Queries----------*/
+@media only screen and (max-width: 630px) {
+  .signIn-btns {
     flex-direction: column;
-    padding-bottom: 10px;
-    transform: scale(1, 1);
-    transition: 0.3s all ease-in-out;
   }
-  
-  .exercise-card img {
-    height: 326px;
-  }
-  
-  .bodyPart-card {
-    transform: scale(1, 1);
-    transition: 0.3s all ease-in-out;
-  }
-  
-  .exercise-card:hover,
-  .bodyPart-card:hover {
-    transform: scale(1.1, 1.1);
-  }
-  
-  .search-btn:hover {
-    color: #273bd3 !important;
-    border: 1px solid #273bd3 !important;
-  }
-  
-  .exercise-video {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    width: 387px;
-    height: 381px;
-    text-decoration: none;
-  }
-  
-  @media screen and (max-width:1200px) {
-    .detail-image {
-      width: 300px;
-      height: 300px;
-    }
-  
-  
-    .react-horizontal-scrolling-menu--scroll-container {
-      width: 500px;
-    }
-  
-    .left-arrow,
-    .right-arrow {
-      position: static !important;
-    }
-  
-    .hero-banner-img {
-      display: none;
-    }
-  
-    .exercise-card {
-      width: 320px;
-    }
-  
-    .exercise-video {
-      width: 320px;
-      height: 300px;
-    }
 
-    /* Below contains the styling added after the basic import sheet */
-
-    #ApeShit {
-
-    }
-  
+  .signIn-btn-1 {
+    width: 100% !important;
   }
-  
-  @media screen and (max-width:400px) {
-    .exercise-card {
-      width: 280px;
-    }
+
+  .signIn-btn-2 {
+    width: 100% !important;
   }
+}

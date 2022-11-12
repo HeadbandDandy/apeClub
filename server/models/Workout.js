@@ -13,7 +13,15 @@ const workoutSchema = new Schema(
             required: true,
             unique: false
         },
+<<<<<<< HEAD
         exercises:[]
+=======
+        exercises: {
+            type: Array,
+            required: true,
+            unique: false
+        }
+>>>>>>> develop
     }
 
 )

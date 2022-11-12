@@ -1,7 +1,7 @@
 import React, {useState, useRef} from 'react';
 import logo from '../../img/ApeFrontFacingPose.png';
 
-const SignIn = () => {
+const Register = () => {
   const username = useRef(null);
   const email = useRef(null);
   const password = useRef(null);
@@ -22,7 +22,10 @@ const SignIn = () => {
   }
 
   function clearForm() {
-    //Reload page to clear form
+    username.current.value = '';
+    email.current.value = '';
+    password.current.value = '';
+    confirmPassword.current.value = '';
   }
 
   return (
@@ -43,4 +46,4 @@ const SignIn = () => {
   )
 }
 
-export default SignIn
+export default Register;

@@ -15,17 +15,14 @@ const Register = () => {
     }
     console.log(user);
     if(password.current.value === confirmPassword.current.value) {
-      //Send Data
+      //Send Data To Back End Here
     } else {
-      //show alert
+      //Show Alert Here
     }
   }
 
   function clearForm() {
-    username.current.value = '';
-    email.current.value = '';
-    password.current.value = '';
-    confirmPassword.current.value = '';
+    //Reload page to clear form
   }
 
   return (
@@ -46,4 +43,4 @@ const Register = () => {
   )
 }
 
-export default Register;
+export default Register

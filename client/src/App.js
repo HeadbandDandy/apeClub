@@ -14,6 +14,7 @@ import Back from './components/back';
 import Arms from './components/arms'
 import UpperLegs from './components/upperlegs'
 import LowerLegs from './components/lowerlegs'
+import Homepage from './components/homepage'
 
 
 
@@ -73,6 +74,11 @@ const router = createBrowserRouter([
   {
     path: '/lowerlegs',
     element: < LowerLegs />
+  },
+  //below contains homepage for once user is logged in
+  {
+    path: '/homepage',
+    element: < Homepage />
   }
 
 ]);

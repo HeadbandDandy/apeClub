@@ -234,6 +234,53 @@ label:focus,
   background-color: black !important;
 }
 
+.exercise-page {
+  padding-top: 8vh;
+  color: white;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 500px;
+}
+
+.exercise-page-navigation {
+  display: flex;
+  justify-content: space-between;
+  color: #0DCAF0 !important;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.exercise-page-navigation a {
+  color: #0DCAF0;
+}
+
+.card-header {
+  background-color: #4D4D4D;
+  text-transform: capitalize;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.card-footer {
+  background-color: #4D4D4D;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  text-transform: capitalize;
+  font-size: 24px;
+}
+
+.card-body {
+  background-color: black;
+}
+
+.card {
+  margin-top: 5vh;
+  margin-bottom: 30px;
+}
+
 /*----------Animations----------*/
 @keyframes home-btn-fade-in {
   0% {

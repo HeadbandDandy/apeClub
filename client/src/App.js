@@ -8,6 +8,18 @@ import Shoulders from './components/shoulders';
 import { createBrowserRouter, RouterProvider, Route} from 'react-router-dom';
 import { ExerciseContext } from './index';
 import axios from 'axios';
+import LowerBody from './components/lowerbody';
+import Chest from './components/chest';
+import Back from './components/back';
+import Arms from './components/arms'
+import UpperLegs from './components/upperlegs'
+import LowerLegs from './components/lowerlegs'
+import Homepage from './components/homepage'
+
+
+
+
+// below contains the browser routes linked to individual components.
 
 const router = createBrowserRouter([
   {
@@ -22,18 +34,53 @@ const router = createBrowserRouter([
     path: '/exercises',
     element: <Exercises />
   },
-  {
-    path: '/upperbody',
-    element: <UpperBody />
-  },
+
   {
     path: '/register',
     element: <Register />
   },
+
+// below contains upperbody pages/components
+  {
+    path: '/upperbody',
+    element: <UpperBody />
+  },
+  
   {
     path: '/shoulders',
     element: <Shoulders />
+  },
+  {
+    path: '/lowerbody',
+    element: <LowerBody />
+  },
+  {
+    path: '/chest',
+    element: <Chest />
+  },
+  {
+    path: 'back',
+    element: <Back />
+  },
+  {
+    path: '/arms',
+    element: <Arms />
+  },
+  // below contains lowerbody pages/components
+  {
+    path: '/upperlegs',
+    element: < UpperLegs />
+  },
+  {
+    path: '/lowerlegs',
+    element: < LowerLegs />
+  },
+  //below contains homepage for once user is logged in
+  {
+    path: '/homepage',
+    element: < Homepage />
   }
+
 ]);
 
 function App() {

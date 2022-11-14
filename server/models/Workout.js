@@ -1,6 +1,5 @@
 const { Schema, model, SchemaTypes } = require('mongoose');
 const bcrypt = require('bcrypt');
-const { INTEGER } = require('sequelize/types');
 
 const workoutSchema = new Schema(
     {
@@ -10,7 +9,7 @@ const workoutSchema = new Schema(
             unique: false
         },
         userId: {
-            type: INTEGER,
+            type: Number,
             required: true,
             unique: false
         },
@@ -20,5 +19,3 @@ const workoutSchema = new Schema(
 )
 
 const Workout = model('Workout', workoutSchema);
-
-module.exports = Workout;

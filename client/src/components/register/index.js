@@ -2,6 +2,7 @@ import React, {useState, useRef} from 'react';
 import logo from '../../img/ApeFrontFacingPose.png';
 import { ADD_USER } from '../../utils/mutations'
 import { useMutation } from '@apollo/client'
+import Auth from '../../utils/auth'
 
 const Register = () => {
   const username = useRef(null);
@@ -20,16 +21,25 @@ const Register = () => {
     if(password.current.value === confirmPassword.current.value) {
       //Send Data To Back End Here
       try {
-        const { userData } = await addUser({
+        const { data } = await addUser({
           variables: { ...user },
         });
   
-      //Auth.login(user.addUser.token);
+      Auth.login(data.addUser.token);
       } catch (e) {
-      console.error(e);
+        console.error(e);
+        const errorMessage = e.message
+        console.log(errorMessage)
+        if(errorMessage.includes('email')) {
+          alert('Email is already in use')
+        } else if (errorMessage.includes('username')){
+          alert('Username is already in use')
+        } else if(errorMessage.includes('password')) {
+          alert('Password must be atleast 5 characters')
+        }
       }
     } else {
-      console.log("You ain't getting in!");
+      alert("Your password does not match");
       
     }
   }

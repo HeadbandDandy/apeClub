@@ -21,7 +21,7 @@ const Register = () => {
       //Send Data To Back End Here
       try {
         const { userData } = await addUser({
-          variables: { user },
+          variables: { ...user },
         });
   
       //Auth.login(user.addUser.token);

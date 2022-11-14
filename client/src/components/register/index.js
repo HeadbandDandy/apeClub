@@ -1,13 +1,16 @@
 import React, {useState, useRef} from 'react';
 import logo from '../../img/ApeFrontFacingPose.png';
+import { ADD_USER } from '../../utils/mutations'
+import { useMutation } from '@apollo/client'
 
 const Register = () => {
   const username = useRef(null);
   const email = useRef(null);
   const password = useRef(null);
   const confirmPassword = useRef(null);
+  const [addUser] = useMutation(ADD_USER);
 
-  function registerUser() {
+  async function registerUser() {
     const user = {
       username: username.current.value,
       email: email.current.value,
@@ -16,8 +19,18 @@ const Register = () => {
     console.log(user);
     if(password.current.value === confirmPassword.current.value) {
       //Send Data To Back End Here
+      try {
+        const { userData } = await addUser({
+          variables: { user },
+        });
+  
+      //Auth.login(user.addUser.token);
+      } catch (e) {
+      console.error(e);
+      }
     } else {
-      //Show Alert Here
+      console.log("You ain't getting in!");
+      
     }
   }
 

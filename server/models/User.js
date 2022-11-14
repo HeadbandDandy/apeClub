@@ -49,7 +49,8 @@ userSchema.methods.isCorrectPassword = async function(password) {
   return bcrypt.compare(password, this.password);
 };
 
-userSchema.virtual('workoutCount').get(function() {
+// TO DO:
+userSchema.virtual('workouCount').get(function() {
   return this.workouts.length;
 })
 

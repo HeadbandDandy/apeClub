@@ -1,17 +1,12 @@
 import React, {useState, useEffect, useContext} from "react";
 import { ExerciseContext } from "../..";
 
-
-// below contains our boilerplate code for the rest of our components
-// below only changes needed are line 8, 13, 22, 26, and 43
-// add body part/section and format from there
-
-const Shoulders = () => {
+const Arms = () => {
     const [exercises, setExercises] = useContext(ExerciseContext);
     let [currentExercise, setCurrentExercise] = useState(0);
-
+// filter below searches for exercises that include upper arm and lower arms
     const pageExercises = exercises.filter(obj => {
-        return obj.bodyPart === 'shoulders';
+        return obj.bodyPart === 'upper arms' && 'lower arms';
     });
 
     const changeExercise = (num) => {
@@ -20,11 +15,11 @@ const Shoulders = () => {
 
     return (
         <div className='exercise-page'>
-            <h1>Shoulders</h1>
+            <h1>Arms</h1>
             <div className="card text-center">
                 <div className="card-header">{pageExercises[currentExercise]?.name}</div>
                 <div className="card-body">
-                    <img src={pageExercises[currentExercise]?.gifUrl} alt='Demonstration of side bend exerciese' />
+                    <img src={pageExercises[currentExercise]?.gifUrl} alt='Demonstration of Bicep Curl' />
                 </div>
                 <div className="card-footer">
                     <span className="badge badge-info">{pageExercises[currentExercise]?.bodyPart}</span>
@@ -41,4 +36,4 @@ const Shoulders = () => {
     )
 }
 
-export default Shoulders;
+export default Arms;

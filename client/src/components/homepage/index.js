@@ -87,7 +87,7 @@ export default function Album() {
               ARE YOU READY TO GO APESHIT?
               </div>
             </Typography>
-            <Typography variant="h4" align="center" color="text.primary" paragraph>
+            <Typography variant="h4" align="center" color="red" paragraph>
             {/* check with backend and change $username to correct name and syntax */}
               Hello {user.username}! This page is where you save and view your workouts, as well as view other ape's workouts.
             </Typography>

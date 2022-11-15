@@ -14,8 +14,10 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { QUERY_USER, QUERY_ME } from '../../utils/queries'
+import { useParams } from 'react-router-dom';
+import { useQuery } from '@apollo/client';
 
-const username = 'client_user'
 //conditionally renders homepage for logged in users
 function Copyright() {
   return (
@@ -31,7 +33,15 @@ function Copyright() {
 }
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 const theme = createTheme();
+// async function getUser() {
+//   const { username: userParam } = useParams();
+//   const { data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
+//     variables: { username: userParam }
+//   })
+//   const user = data?.me||data?.user
+// }
 export default function Album() {
+  
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -71,7 +81,6 @@ export default function Album() {
               spacing={2}
               justifyContent="center"
             >
-              <Button variant="contained">Save Workouts</Button>
               <Button variant="outlined">View Workouts</Button>
             </Stack>
           </Container>

@@ -14,6 +14,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import red from '@mui/material/colors/red';
 import { QUERY_USER, QUERY_ME } from '../../utils/queries'
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
@@ -38,7 +39,7 @@ function Copyright() {
   );
 }
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-const theme = createTheme();
+const theme = createTheme({palette: {primary: red,},});
 
 export default function Album() {
   const { username: userParam } = useParams();
@@ -54,7 +55,7 @@ export default function Album() {
       <AppBar position="relative">
         <Toolbar>
           <Typography variant="h6" color="black" noWrap>
-            WELCOME TO THE APECLUB!
+           <strong> WELCOME TO THE APECLUB!</strong>
           </Typography>
         </Toolbar>
       </AppBar>

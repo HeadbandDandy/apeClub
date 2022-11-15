@@ -20,6 +20,9 @@ import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import logo from '../../img/ApeFlexing.png';
 
+//below needs to contain imports for MUI color styling
+
+
 //conditionally renders homepage for logged in users
 function Logo(){
   return <img src={logo} className='logo' alt='Muscular ape with hands on hips.'></img>
@@ -52,10 +55,12 @@ export default function Album() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
+
       <AppBar position="relative">
         <Toolbar>
           <Typography variant="h6" color="black" noWrap>
            <strong> WELCOME TO THE APECLUB!</strong>
+
           </Typography>
         </Toolbar>
       </AppBar>
@@ -82,7 +87,7 @@ export default function Album() {
               ARE YOU READY TO GO APESHIT?
               </div>
             </Typography>
-            <Typography variant="h3" align="center" color="text.secondary" paragraph>
+            <Typography variant="h4" align="center" color="text.primary" paragraph>
             {/* check with backend and change $username to correct name and syntax */}
               Hello {user.username}! This page is where you save and view your workouts, as well as view other ape's workouts.
             </Typography>
@@ -114,7 +119,7 @@ export default function Album() {
                     alt="random"
                   />
                   <CardContent sx={{ flexGrow: 1 }}>
-                    <Typography gutterBottom variant="h5" component="h2">
+                    <Typography gutterBottom variant="h3" component="h2">
                       Heading
                     </Typography>
                     <Typography>
@@ -134,7 +139,7 @@ export default function Album() {
       </main>
       {/* Footer */}
       <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
-        <Typography variant="h6" align="center" gutterBottom>
+        <Typography variant="h5" align="center" gutterBottom>
           Footer
         </Typography>
         <Typography

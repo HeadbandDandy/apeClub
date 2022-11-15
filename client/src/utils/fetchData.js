@@ -1,5 +1,6 @@
 // this file will contain connection for rapidApi 
 
+
 export const exerciseOptions = {
   method: 'GET',
   url: 'https://exercisedb.p.rapidapi.com',
@@ -26,3 +27,4 @@ export const fetchData = async (url, options) => {
 
   return data;
 };
+

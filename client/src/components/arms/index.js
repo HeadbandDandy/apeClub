@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext} from "react";
+import React, {useState, useEffect, useContext, useRef} from "react";
 import { ExerciseContext } from "../..";
 
 const Arms = () => {
@@ -13,6 +13,11 @@ const Arms = () => {
         setCurrentExercise(currentExercise + num);
     }
 
+    async function saveExercise() {
+        console.log(pageExercises[currentExercise].id);
+        //Call back-end to save exercise
+    }
+
     return (
         <div className='exercise-page'>
             <h1>Arms</h1>
@@ -22,8 +27,8 @@ const Arms = () => {
                     <img src={pageExercises[currentExercise]?.gifUrl} alt='Demonstration of Bicep Curl' />
                 </div>
                 <div className="card-footer">
-                    <span className="badge badge-info">{pageExercises[currentExercise]?.bodyPart}</span>
                     <span className="badge badge-info">{pageExercises[currentExercise]?.target}</span>
+                    <span onClick={() => saveExercise()} className="badge badge-info save-badge">Save</span>
                     <span className="badge badge-info">{pageExercises[currentExercise]?.equipment}</span>
                 </div>
             </div>

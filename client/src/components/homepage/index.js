@@ -14,8 +14,13 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { QUERY_USER, QUERY_ME } from '../../utils/queries'
+import { useParams } from 'react-router-dom';
+import { useQuery } from '@apollo/client';
 
-const username = 'client_user'
+//below needs to contain imports for MUI color styling
+
+
 //conditionally renders homepage for logged in users
 function Copyright() {
   return (
@@ -31,12 +36,20 @@ function Copyright() {
 }
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 const theme = createTheme();
+
 export default function Album() {
+  const { username: userParam } = useParams();
+  const { loading, error, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
+     variables: { username: userParam }
+   })
+   if(loading) return 'Loading...'
+   if(error) return `Error ${error.message}`
+   const user = data?.me||data?.user
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <AppBar position="relative">
-        <Toolbar>
+      <AppBar position="relative" >
+        <Toolbar color='red'>
           <Typography variant="h6" color="inherit" noWrap>
             WELCOME TO THE APECLUB!
           </Typography>
@@ -56,14 +69,14 @@ export default function Album() {
               component="h1"
               variant="h2"
               align="center"
-              color="text.primary"
+              color="text.red"
               gutterBottom
             >
               ARE YOU READY TO GO APESHIT?
             </Typography>
-            <Typography variant="h3" align="center" color="text.secondary" paragraph>
+            <Typography variant="h4" align="center" color="text.primary" paragraph>
             {/* check with backend and change $username to correct name and syntax */}
-              Hello {username}! This page is where you save and view your workouts, as well as view other ape's workouts.
+              Hello {user.username}! This page is where you save and view your workouts, as well as view other ape's workouts.
             </Typography>
             <Stack
               sx={{ pt: 4 }}
@@ -71,7 +84,6 @@ export default function Album() {
               spacing={2}
               justifyContent="center"
             >
-              <Button variant="contained">Save Workouts</Button>
               <Button variant="outlined">View Workouts</Button>
             </Stack>
           </Container>
@@ -94,7 +106,7 @@ export default function Album() {
                     alt="random"
                   />
                   <CardContent sx={{ flexGrow: 1 }}>
-                    <Typography gutterBottom variant="h5" component="h2">
+                    <Typography gutterBottom variant="h3" component="h2">
                       Heading
                     </Typography>
                     <Typography>
@@ -114,7 +126,7 @@ export default function Album() {
       </main>
       {/* Footer */}
       <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
-        <Typography variant="h6" align="center" gutterBottom>
+        <Typography variant="h5" align="center" gutterBottom>
           Footer
         </Typography>
         <Typography

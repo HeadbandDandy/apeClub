@@ -46,7 +46,6 @@ async function getUsername() {
 
 
 export default function Album() {
-  let username = 'Michael'
   const { username: userParam } = useParams();
   const { loading, error, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
      variables: { username: userParam }

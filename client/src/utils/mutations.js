@@ -24,8 +24,8 @@ export const ADD_USER = gql`
   `
 ;
 export const ADD_WORKOUT = gql`
-mutation addWorkout($userId: String, $exerciseId: String) {
-  addWorkout(user_id: $userId, exercise_id: $exerciseId)
+mutation addWorkout($user_id: String!, $exercise_id: String!) {
+  addWorkout(user_id: $user_id, exercise_id: $exercise_id)
     _id
     user_id
     exercise_id

@@ -27,14 +27,14 @@ const Arms = () => {
 
     async function saveExercise() {
         
-        const savedExercise = {
+        const exercise = {
             user_id: '6373e570959e1008cdfde812',
             exercise_id: pageExercises[currentExercise].id
         }
-        console.log(savedExercise);
+        console.log(exercise);
         try {
             const { data } = await addWorkout({
-            variables: { ...savedExercise },
+            variables: { user_id: user._id, exercise_id: pageExercises[currentExercise].id},
             });
             console.log(data)
         } catch (e) {

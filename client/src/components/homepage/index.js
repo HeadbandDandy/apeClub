@@ -40,8 +40,20 @@ const theme = createTheme();
 //   })
 //   const user = data?.me||data?.user
 // }
-export default function Album() {
+async function getUsername() {
   
+}
+
+
+export default function Album() {
+  let username = 'Michael'
+  const { username: userParam } = useParams();
+  const { loading, error, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
+     variables: { username: userParam }
+   })
+   if(loading) return 'Loading...'
+   if(error) return `Error ${error.message}`
+   const user = data?.me||data?.user
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -73,7 +85,7 @@ export default function Album() {
             </Typography>
             <Typography variant="h3" align="center" color="text.secondary" paragraph>
             {/* check with backend and change $username to correct name and syntax */}
-              Hello {username}! This page is where you save and view your workouts, as well as view other ape's workouts.
+              Hello {user.username}! This page is where you save and view your workouts, as well as view other ape's workouts.
             </Typography>
             <Stack
               sx={{ pt: 4 }}

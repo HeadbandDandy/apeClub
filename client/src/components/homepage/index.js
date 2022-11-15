@@ -17,8 +17,14 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { QUERY_USER, QUERY_ME } from '../../utils/queries'
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
+import logo from '../../img/ApeFlexing.png';
 
 //conditionally renders homepage for logged in users
+function Logo(){
+  return <img src={logo} className='logo' alt='Muscular ape with hands on hips.'></img>
+}
+
+
 function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary" align="center">
@@ -47,7 +53,7 @@ export default function Album() {
       <CssBaseline />
       <AppBar position="relative">
         <Toolbar>
-          <Typography variant="h6" color="inherit" noWrap>
+          <Typography variant="h6" color="black" noWrap>
             WELCOME TO THE APECLUB!
           </Typography>
         </Toolbar>
@@ -56,7 +62,7 @@ export default function Album() {
         {/* Hero unit */}
         <Box
           sx={{
-            bgcolor: 'background.paper',
+            bgcolor: 'background.black',
             pt: 8,
             pb: 6,
           }}
@@ -66,9 +72,11 @@ export default function Album() {
               component="h1"
               variant="h2"
               align="center"
-              color="text.primary"
+              color="red"
               gutterBottom
+
             >
+              <Logo />
               ARE YOU READY TO GO APESHIT?
             </Typography>
             <Typography variant="h3" align="center" color="text.secondary" paragraph>

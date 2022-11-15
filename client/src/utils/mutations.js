@@ -23,3 +23,11 @@ export const ADD_USER = gql`
   }
   `
 ;
+export const ADD_WORKOUT = gql`
+mutation addWorkout($userId: String, $exerciseId: String) {
+  addWorkout(user_id: $userId, exercise_id: $exerciseId)
+    _id
+    user_id
+    exercise_id
+}
+`

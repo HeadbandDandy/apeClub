@@ -25,16 +25,16 @@ const resolvers = {
         .populate('workouts')
     },
     workouts: async () => {
-      return workout.find()
+      return Workout.find()
         .select('-__v')
     },
     workoutsByUser: async (parent, { user_id }) => {
       const params = user_id ? { user_id } : {}
-      return workout.find(params)
+      return Workout.find(params)
         .select('-__v')
     },
     workout: async (parent, { _id }) => {
-      return workout.findOne()
+      return Workout.findOne()
       .select('-__v')
     }
   },
@@ -57,17 +57,17 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    addWorkout: async (parent, args, context) => {
-      if (context.user) {
-        const workout = await workout.create({ ...args, user_id: context.user._id });
-        await User.findByIdAnUpdate(
-          { _id: context.user._id },
+    addWorkout: async (parent, args) => {
+
+        const workout = await Workout.create({ ...args });
+        await User.findByIdAndUpdate(
+          { _id: workout.user_id },
           { $push: { workouts: workout._id } },
           { new: true }
-        )
+        );
         return workout
-      }
-      throw new AuthenticationError('You need to be logged in!');
+
+      //throw new AuthenticationError('You need to be logged in!');
     }
   }
 }

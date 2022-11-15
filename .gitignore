@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 node_modules
-=======
 /node_modules
->>>>>>> develop
-
+.env
 .DS_Store

@@ -33,17 +33,6 @@ function Copyright() {
 }
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 const theme = createTheme();
-// async function getUser() {
-//   const { username: userParam } = useParams();
-//   const { data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
-//     variables: { username: userParam }
-//   })
-//   const user = data?.me||data?.user
-// }
-async function getUsername() {
-  
-}
-
 
 export default function Album() {
   const { username: userParam } = useParams();

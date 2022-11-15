@@ -77,7 +77,9 @@ export default function Album() {
 
             >
               <Logo />
+              <div>
               ARE YOU READY TO GO APESHIT?
+              </div>
             </Typography>
             <Typography variant="h3" align="center" color="text.secondary" paragraph>
             {/* check with backend and change $username to correct name and syntax */}

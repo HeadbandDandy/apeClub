@@ -14,14 +14,21 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import red from '@mui/material/colors/red';
 import { QUERY_USER, QUERY_ME } from '../../utils/queries'
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
+import logo from '../../img/ApeFlexing.png';
 
 //below needs to contain imports for MUI color styling
 
 
 //conditionally renders homepage for logged in users
+function Logo(){
+  return <img src={logo} className='logo' alt='Muscular ape with hands on hips.'></img>
+}
+
+
 function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary" align="center">
@@ -35,7 +42,7 @@ function Copyright() {
   );
 }
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-const theme = createTheme();
+const theme = createTheme({palette: {primary: red,},});
 
 export default function Album() {
   const { username: userParam } = useParams();
@@ -47,11 +54,13 @@ export default function Album() {
    const user = data?.me||data?.user
   return (
     <ThemeProvider theme={theme}>
-      <CssBaseline enableColorScheme />
-      <AppBar position="relative" >
-        <Toolbar color='red'>
-          <Typography variant="h6" color="inherit" noWrap>
-            WELCOME TO THE APECLUB!
+      <CssBaseline />
+
+      <AppBar position="relative">
+        <Toolbar>
+          <Typography variant="h6" color="black" noWrap>
+           <strong> WELCOME TO THE APECLUB!</strong>
+
           </Typography>
         </Toolbar>
       </AppBar>
@@ -59,7 +68,7 @@ export default function Album() {
         {/* Hero unit */}
         <Box
           sx={{
-            bgcolor: 'background.paper',
+            bgcolor: 'background.black',
             pt: 8,
             pb: 6,
           }}
@@ -71,8 +80,12 @@ export default function Album() {
               align="center"
               color="red"
               gutterBottom
+
             >
+              <Logo />
+              <div>
               ARE YOU READY TO GO APESHIT?
+              </div>
             </Typography>
             <Typography variant="h4" align="center" color="text.primary" paragraph>
             {/* check with backend and change $username to correct name and syntax */}

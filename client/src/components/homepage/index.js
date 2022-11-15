@@ -47,7 +47,7 @@ export default function Album() {
    const user = data?.me||data?.user
   return (
     <ThemeProvider theme={theme}>
-      <CssBaseline />
+      <CssBaseline enableColorScheme />
       <AppBar position="relative" >
         <Toolbar color='red'>
           <Typography variant="h6" color="inherit" noWrap>
@@ -69,7 +69,7 @@ export default function Album() {
               component="h1"
               variant="h2"
               align="center"
-              color="text.red"
+              color="red"
               gutterBottom
             >
               ARE YOU READY TO GO APESHIT?

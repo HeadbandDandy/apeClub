@@ -71,7 +71,6 @@ export default function Album() {
               spacing={2}
               justifyContent="center"
             >
-              <Button variant="contained">Save Workouts</Button>
               <Button variant="outlined">View Workouts</Button>
             </Stack>
           </Container>

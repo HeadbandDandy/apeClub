@@ -8,12 +8,16 @@ const workoutSchema = new Schema(
             required: true, 
             unique: false
         },
-        userId: {
-            type: Number,
+        user_id: {
+            type: String,
             required: true,
             unique: false
         },
-        exercises:[]
+        exercises: {
+            type: Array,
+            required: true,
+            unique: false
+        }
     }
 
 )

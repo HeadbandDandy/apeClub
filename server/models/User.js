@@ -50,9 +50,9 @@ userSchema.methods.isCorrectPassword = async function(password) {
 };
 
 // TO DO:
-// userSchema.virtual('friendCount').get(function() {
-//   return this.friends.length;
-// })
+userSchema.virtual('workouCount').get(function() {
+  return this.workouts.length;
+})
 
 const User = model('User', userSchema);
 

@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from 'react';
+import { createBrowserRouter, RouterProvider, Route } from 'react-router-dom';
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+} from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
 import Home from './components/home';
 import SignIn from './components/signIn';
 import Exercises from './components/exercises';
 import UpperBody from './components/upperbody';
 import Register from './components/register';
 import Shoulders from './components/shoulders';
-import { createBrowserRouter, RouterProvider, Route} from 'react-router-dom';
 import { ExerciseContext } from './index';
 import axios from 'axios';
 import LowerBody from './components/lowerbody';
@@ -16,8 +23,24 @@ import UpperLegs from './components/upperlegs'
 import LowerLegs from './components/lowerlegs'
 import Homepage from './components/homepage'
 
+const httpLink = createHttpLink({
+  uri: 'http://localhost:3001/graphql',
+});
 
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem('id_token');
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
 
+const client = new ApolloClient({
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache(),
+});
 
 // below contains the browser routes linked to individual components.
 
@@ -40,12 +63,12 @@ const router = createBrowserRouter([
     element: <Register />
   },
 
-// below contains upperbody pages/components
+  // below contains upperbody pages/components
   {
     path: '/upperbody',
     element: <UpperBody />
   },
-  
+
   {
     path: '/shoulders',
     element: <Shoulders />
@@ -59,7 +82,7 @@ const router = createBrowserRouter([
     element: <Chest />
   },
   {
-    path: 'back',
+    path: '/back',
     element: <Back />
   },
   {
@@ -82,6 +105,8 @@ const router = createBrowserRouter([
   }
 
 ]);
+
+
 
 function App() {
   const [exercises, setExercises] = useState([])
@@ -106,13 +131,15 @@ function App() {
   useEffect(() => {
     getExercises();
   }, [])
-  
+
   return (
-    <div className="App">
-      <ExerciseContext.Provider value={[ exercises, setExercises ]}>
-        <RouterProvider router={router} />
-      </ExerciseContext.Provider>
-    </div>
+    <ApolloProvider client={client}>
+      <div className="App">
+        <ExerciseContext.Provider value={[exercises, setExercises]}>
+          <RouterProvider router={router} />
+        </ExerciseContext.Provider>
+      </div>
+    </ApolloProvider>
   );
 }
 

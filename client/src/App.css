@@ -16,6 +16,14 @@ code {
     monospace;
 }
 
+.save-badge {
+  color: #0DCAF0;
+  font-weight: bold;
+  font-size: 18px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 .menu-screen {
   background-color: black;
   padding-top: 10vh;

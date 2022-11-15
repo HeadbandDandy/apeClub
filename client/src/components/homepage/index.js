@@ -15,7 +15,7 @@ import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-
+const username = 'client_user'
 //conditionally renders homepage for logged in users
 function Copyright() {
   return (
@@ -63,7 +63,7 @@ export default function Album() {
             </Typography>
             <Typography variant="h3" align="center" color="text.secondary" paragraph>
             {/* check with backend and change $username to correct name and syntax */}
-              Hello {$username}! This page is where you save and view your workouts, as well as view other ape's workouts.
+              Hello {username}! This page is where you save and view your workouts, as well as view other ape's workouts.
             </Typography>
             <Stack
               sx={{ pt: 4 }}

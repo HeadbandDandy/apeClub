@@ -1,6 +1,10 @@
 import React, {useState, useEffect, useContext, useRef} from "react";
 import { ExerciseContext } from "../..";
 import Auth from '../../utils/auth';
+import { ADD_WORKOUT } from "../../utils/mutations";
+import { QUERY_ME, QUERY_USER } from "../../utils/queries";
+import { useMutation, useQuery } from '@apollo/client'
+import { useParams } from 'react-router-dom';
 
 const Arms = () => {
     const [exercises, setExercises] = useContext(ExerciseContext);
@@ -13,10 +17,30 @@ const Arms = () => {
     const changeExercise = (num) => {
         setCurrentExercise(currentExercise + num);
     }
+    const [addWorkout] = useMutation(ADD_WORKOUT)
+    const { username: userParam } = useParams();
+    const { loading, error, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
+        variables: { username: userParam }
+    })
+    if(loading) return 'Loading...'
+    if(error) return `Error ${error.message}`
+    const user = data?.me||data?.user
 
     async function saveExercise() {
-        console.log(pageExercises[currentExercise].id);
-        //Call back-end to save exercise
+        
+        const exercise = {
+            user_id: user._id,
+            exercise_id: pageExercises[currentExercise].id
+        }
+        console.log(exercise);
+        try {
+            const { data } = await addWorkout({
+            variables: { user_id: user._id, exercise_id: pageExercises[currentExercise].id},
+            });
+            console.log(data)
+        } catch (e) {
+            console.error(e);
+        }
     }
 
     return (

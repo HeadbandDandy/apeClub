@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useContext } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
@@ -19,13 +19,22 @@ import { QUERY_USER, QUERY_ME } from '../../utils/queries'
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import logo from '../../img/ApeFlexing.png';
+import { ExerciseContext } from '../..';
 
-//below needs to contain imports for MUI color styling
+
 
 
 //conditionally renders homepage for logged in users
 function Logo(){
   return <img src={logo} className='logo' alt='Muscular ape with hands on hips.'></img>
+}
+
+// below contains the function to get cards to render dynamically
+
+ function savedCards (workoutData, exercises) {
+
+console.log(workoutData, exercises)
+
 }
 
 
@@ -41,10 +50,15 @@ function Copyright() {
     </Typography>
   );
 }
+
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
 const theme = createTheme({palette: {primary: red,},});
 
 export default function Album() {
+  const [ exercises ] = useContext(ExerciseContext);
+
+
   const { username: userParam } = useParams();
   const { loading, error, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
      variables: { username: userParam }
@@ -52,6 +66,9 @@ export default function Album() {
    if(loading) return 'Loading...'
    if(error) return `Error ${error.message}`
    const user = data?.me||data?.user
+
+    savedCards(user.workouts, exercises)
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -115,12 +132,12 @@ export default function Album() {
                       // 16:9
                       pt: '56.25%',
                     }}
-                    image="https://source.unsplash.com/random"
+                    image=""
                     alt="random"
                   />
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography gutterBottom variant="h3" component="h2">
-                      Heading
+                      {card}
                     </Typography>
                     <Typography>
                       This is a media card. You can use this section to describe the

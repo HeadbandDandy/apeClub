@@ -46,6 +46,8 @@ let cardDataArray = []
 
 console.log("This what we are lookign for", cardDataArray)
 
+return cardDataArray;
+
 }
 
 
@@ -61,8 +63,7 @@ function Copyright() {
     </Typography>
   );
 }
-//below goes with function below line 35
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
 
 const theme = createTheme({palette: {primary: red,},});
 
@@ -80,7 +81,7 @@ export default function Album() {
 
    // below belongs to line 35
 
-    savedCards(user.workouts, exercises)
+    const cards = savedCards(user.workouts, exercises)
 
   return (
     <ThemeProvider theme={theme}>

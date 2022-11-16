@@ -3,18 +3,13 @@ const bcrypt = require('bcrypt');
 
 const workoutSchema = new Schema(
     {
-        name: {
-            type: String,
-            required: true, 
-            unique: false
-        },
         user_id: {
             type: String,
             required: true,
             unique: false
         },
-        exercises: {
-            type: Array,
+        exercise_id: {
+            type: String,
             required: true,
             unique: false
         }

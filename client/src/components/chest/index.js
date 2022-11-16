@@ -1,5 +1,6 @@
 import React, {useState, useEffect, useContext, useRef} from "react";
 import { ExerciseContext } from "../..";
+import Auth from '../../utils/auth';
 
 const Chest = () => {
     const [exercises, setExercises] = useContext(ExerciseContext);
@@ -27,8 +28,11 @@ const Chest = () => {
                     <img src={pageExercises[currentExercise]?.gifUrl} alt='Demonstration of Push Up' />
                 </div>
                 <div className="card-footer">
-                    <span className="badge badge-info">{pageExercises[currentExercise]?.bodyPart}</span>
-                    <span onClick={() => saveExercise()} className="badge badge-info save-badge">Save</span>
+                    <span className="badge badge-info">{pageExercises[currentExercise]?.target}</span>
+                    {Auth.loggedIn() ? (
+                        <span onClick={() => saveExercise()} className="badge badge-info save-badge">Save</span>
+                    ) : (<span className="badge badge-info">{pageExercises[currentExercise]?.bodyPart}</span>)
+                    }
                     <span className="badge badge-info">{pageExercises[currentExercise]?.equipment}</span>
                 </div>
             </div>

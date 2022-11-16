@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
@@ -34,19 +34,6 @@ function Logo(){
 
 // below we are having an issue in which the console displays empty arrays
 
- function savedCards (workoutData, exercises) {
-let cardDataArray = []
-  for ( let i = 0; i < workoutData.length; i++) {
-    const exerciseFilter = exercises.filter(obj => {
-      return obj.id === workoutData[i].exercise_id;
-    })
-    cardDataArray.push(exerciseFilter)
-  }
-
-
-console.log("This what we are lookign for", cardDataArray)
-
-}
 
 
 function Copyright() {
@@ -68,19 +55,37 @@ const theme = createTheme({palette: {primary: red,},});
 
 export default function Album() {
   const [ exercises ] = useContext(ExerciseContext);
-
+  const [ exerciseArr, setExerciseArr ] = useState([]);
 
   const { username: userParam } = useParams();
   const { loading, error, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
      variables: { username: userParam }
    })
-   if(loading) return 'Loading...'
-   if(error) return `Error ${error.message}`
    const user = data?.me||data?.user
+console.log(user, exercises);
+
+function savedCards (workoutData, exercises) {
+  let cardDataArray = []
+    for ( let i = 0; i < workoutData.length; i++) {
+      if (cardDataArray.length < 9) {
+        const exerciseFilter = exercises.find(obj => {
+          console.log(obj);
+          return obj.id === workoutData[i].exercise_id;
+        })
+        cardDataArray.push(exerciseFilter)
+      }
+    }
+  setExerciseArr(cardDataArray);
+  
+  console.log("This what we are lookign for", cardDataArray)
+  
+  }
+  useEffect(() => {savedCards(user?.workouts || [], exercises)},[exercises, user]);
+
+  if(loading) return 'Loading...'
+  if(error) return `Error ${error.message}`
 
    // below belongs to line 35
-
-    savedCards(user.workouts, exercises)
 
   return (
     <ThemeProvider theme={theme}>
@@ -134,8 +139,8 @@ export default function Album() {
         <Container sx={{ py: 8 }} maxWidth="md">
           {/* End hero unit */}
           <Grid container spacing={4}>
-            {cards.map((card) => (
-              <Grid item key={card} xs={12} sm={6} md={4}>
+            {exerciseArr.map((card) => (
+              <Grid item key={card?._id} xs={12} sm={6} md={4}>
                 <Card
                   sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
                 >
@@ -145,16 +150,15 @@ export default function Album() {
                       // 16:9
                       pt: '56.25%',
                     }}
-                    image=""
+                    image= {card?.gifUrl}
                     alt="random"
                   />
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography gutterBottom variant="h3" component="h2">
-                      {card}
+                      {card?.name}
                     </Typography>
                     <Typography>
-                      This is a media card. You can use this section to describe the
-                      content.
+                    {card?.bodyPart}
                     </Typography>
                   </CardContent>
                   <CardActions>

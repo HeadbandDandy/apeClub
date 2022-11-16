@@ -38,7 +38,7 @@ function Logo(){
 let cardDataArray = []
   for ( let i = 0; i < workoutData.length; i++) {
     const exerciseFilter = exercises.filter(obj => {
-      return obj.id === workoutData[i].id;
+      return obj.id === workoutData[i].exercise_id;
     })
     cardDataArray.push(exerciseFilter)
   }

@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useContext, useRef} from "react";
 import { ExerciseContext } from "../..";
-
+import Auth from '../../utils/auth';
 
 // below contains our boilerplate code for the rest of our components
 // below only changes needed are line 8, 13, 22, 26, and 43
@@ -33,7 +33,10 @@ const Shoulders = () => {
                 </div>
                 <div className="card-footer">
                     <span className="badge badge-info">{pageExercises[currentExercise]?.target}</span>
-                    <span onClick={() => saveExercise()} className="badge badge-info save-badge">Save</span>
+                    {Auth.loggedIn() ? (
+                        <span onClick={() => saveExercise()} className="badge badge-info save-badge">Save</span>
+                    ) : (<span className="badge badge-info">{pageExercises[currentExercise]?.bodyPart}</span>)
+                    }
                     <span className="badge badge-info">{pageExercises[currentExercise]?.equipment}</span>
                 </div>
             </div>

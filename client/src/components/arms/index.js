@@ -28,7 +28,7 @@ const Arms = () => {
     async function saveExercise() {
         
         const exercise = {
-            user_id: '6373e570959e1008cdfde812',
+            user_id: user._id,
             exercise_id: pageExercises[currentExercise].id
         }
         console.log(exercise);

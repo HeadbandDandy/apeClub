@@ -85,6 +85,10 @@ function savedCards (workoutData, exercises) {
   if(loading) return 'Loading...'
   if(error) return `Error ${error.message}`
 
+  function viewWorkouts() {
+    window.location.assign('/exercises')
+  }
+
    // below belongs to line 35
 
   return (
@@ -132,7 +136,7 @@ function savedCards (workoutData, exercises) {
               spacing={2}
               justifyContent="center"
             >
-              <Button variant="outlined">View Workouts</Button>
+              <Button onClick={viewWorkouts} variant="outlined">View Workouts</Button>
             </Stack>
           </Container>
         </Box>

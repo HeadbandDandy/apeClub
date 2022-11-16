@@ -23,7 +23,7 @@ const Arms = () => {
         variables: { username: userParam }
     })
     if(loading) return 'Loading...'
-    if(error) return `Error ${error.message}`
+    //if(error) return `Error ${error.message}`
     const user = data?.me||data?.user
 
     async function saveExercise() {
@@ -42,6 +42,28 @@ const Arms = () => {
             console.error(e);
         }
     }
+    function isExerciseSaved() {
+        console.log(user)
+        if(typeof user === undefined) {
+            if(typeof pageExercises[currentExercise] !== "undefined"){
+                const i = user.workouts.findIndex(e => e.exercise_id == pageExercises[currentExercise].id);
+                if (i > -1) {
+                    console.log('true')
+                    return true
+                } else {
+                    console.log('false')
+                    return false
+                }
+            }
+            else{
+                setTimeout(isExerciseSaved, 250);
+            }
+        }else {
+            return false
+        }
+        
+    }
+    isExerciseSaved()
 
     return (
         <div className='exercise-page'>
@@ -52,10 +74,11 @@ const Arms = () => {
                     <img src={pageExercises[currentExercise]?.gifUrl} alt='Demonstration of Bicep Curl' />
                 </div>
                 <div className="card-footer">
-                    <span className="badge badge-info">{pageExercises[currentExercise]?.target}</span>
-                    {Auth.loggedIn() ? (
-                        <span onClick={() => saveExercise()} className="badge badge-info save-badge">Save</span>
-                    ) : (<span className="badge badge-info">{pageExercises[currentExercise]?.bodyPart}</span>)
+                     <span className="badge badge-info">{pageExercises[currentExercise]?.target}</span>
+                    {Auth.loggedIn() && isExerciseSaved() ? (
+                        <button className="btn btn-success">Saved</button>
+                    ) : (Auth.loggedIn() ? (<button onClick={() => saveExercise()} className="btn btn-danger">Add Workout</button>)
+                    :((<span className="badge badge-info">{pageExercises[currentExercise]?.bodyPart}</span>)))
                     }
                     <span className="badge badge-info">{pageExercises[currentExercise]?.equipment}</span>
                 </div>

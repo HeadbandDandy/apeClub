@@ -1,5 +1,6 @@
 import React, {useState, useEffect, useContext, useRef} from "react";
 import { ExerciseContext } from "../..";
+import Auth from '../../utils/auth';
 import { ADD_WORKOUT } from "../../utils/mutations";
 import { QUERY_ME, QUERY_USER } from "../../utils/queries";
 import { useMutation, useQuery } from '@apollo/client'
@@ -52,7 +53,10 @@ const Arms = () => {
                 </div>
                 <div className="card-footer">
                     <span className="badge badge-info">{pageExercises[currentExercise]?.target}</span>
-                    <span onClick={() => saveExercise()} className="badge badge-info save-badge">Save</span>
+                    {Auth.loggedIn() ? (
+                        <span onClick={() => saveExercise()} className="badge badge-info save-badge">Save</span>
+                    ) : (<span className="badge badge-info">{pageExercises[currentExercise]?.bodyPart}</span>)
+                    }
                     <span className="badge badge-info">{pageExercises[currentExercise]?.equipment}</span>
                 </div>
             </div>

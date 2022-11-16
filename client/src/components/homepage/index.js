@@ -31,9 +31,20 @@ function Logo(){
 
 // below contains the function to get cards to render dynamically
 
- function savedCards (workoutData, exercises) {
 
-console.log(workoutData, exercises)
+// below we are having an issue in which the console displays empty arrays
+
+ function savedCards (workoutData, exercises) {
+let cardDataArray = []
+  for ( let i = 0; i < workoutData.length; i++) {
+    const exerciseFilter = exercises.filter(obj => {
+      return obj.id === workoutData[i].id;
+    })
+    cardDataArray.push(exerciseFilter)
+  }
+
+
+console.log("This what we are lookign for", cardDataArray)
 
 }
 
@@ -50,7 +61,7 @@ function Copyright() {
     </Typography>
   );
 }
-
+//below goes with function below line 35
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 const theme = createTheme({palette: {primary: red,},});
@@ -66,6 +77,8 @@ export default function Album() {
    if(loading) return 'Loading...'
    if(error) return `Error ${error.message}`
    const user = data?.me||data?.user
+
+   // below belongs to line 35
 
     savedCards(user.workouts, exercises)
 

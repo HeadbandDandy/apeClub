@@ -115,7 +115,7 @@ function App() {
     method: 'GET',
     url: 'https://exercisedb.p.rapidapi.com/exercises',
     headers: {
-      'X-RapidAPI-Key': '0545f2add5msh75e112b4bdbe49dp15a782jsnfbb11f10c2de',
+      'X-RapidAPI-Key': API_KEY,
       'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com'
     }
   };

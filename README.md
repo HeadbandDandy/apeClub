@@ -11,6 +11,7 @@
 - [Table of Contents](#table-of-contents)
   - [Summary](#summary)
   - [Technologies Used](#technologies-used)
+- [Installation](#installation)
 - [License](#license)
 - [Contributors](#contributors)
 - [Links](#links)
@@ -33,14 +34,27 @@
 * Express
 * React
 * Apollo Server
-* Graphql
+* GraphQL
 * Mongodb
 * Mongoose
 * Dotenv
 * Heroku
 * Material UI
+* BootStrap
+* JWT-Token
+* Axios
 
 
+# Installation
+
+- To run this application, copy this repository into your IDE. 
+- At the root of the file run an <em><strong> npm install </strong></em> to ensure that concurrently is installed. 
+- CD into the client and run <em><strong> npm install </strong></em> to install the dependencies for the client folder
+- CD into the server folder and repeat the same steps from above. If an error occurs, try <em><strong> npm i --legacy-peer-deps </strong></em>
+- After installing dependendcies CD back into the root of the folder and run an <em><strong> npm build </strong></em> or 
+  <em><strong> npm run develop </strong></em>
+- If all the steps above are done correct the application should be up and running. 
+- For any Troubleshooting, contact one of the Contributors.
 
 
 # License
@@ -49,7 +63,7 @@
 # Contributors
 
 
-Michael Bishop, Michael Dougherty, Theo Greer, Daryl Johnson, Rikayla Johnson, Mary Paul
+Michael Bishop, Michael Dougherty, Theo Greer, Darryl Johnson, Rikayla Johnson, Mary Paul.
 
 
 

@@ -63,7 +63,7 @@
 # Contributors
 
 
-Michael Bishop, Michael Dougherty, Theo Greer, Darryl Johnson, Rikayla Johnson, Mary Paul.
+Michael Bishop, Michael Dougherty, Theo Greer, Darryl Johnson, Rikayla Johnson, Mary Paul, Joseph Wright.
 
 
 

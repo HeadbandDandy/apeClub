@@ -24,7 +24,7 @@ import LowerLegs from './components/lowerlegs'
 import Homepage from './components/homepage'
 
 const httpLink = createHttpLink({
-  uri: 'http://localhost:3001/graphql',
+  uri: '/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {

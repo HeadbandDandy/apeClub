@@ -2,7 +2,7 @@
 # ApeClub
 
 
-![Screen Shot ](https://postimg.cc/rDj66T9R)
+![Screen Shot ](https://i.postimg.cc/pdbPFXhC/apeclub.png)
 
 
 

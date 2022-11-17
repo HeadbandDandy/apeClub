@@ -104,7 +104,7 @@ function savedCards (workoutData, exercises) {
       console.error(e);
   }
 }
-  }
+  
 
    // below belongs to line 35
 
@@ -184,7 +184,7 @@ function savedCards (workoutData, exercises) {
                   </CardContent>
                   <CardActions>
                     <Button size="small">View</Button>
-                    <Button size="small">Delete</Button>
+                    <Button onClick={viewWorkouts} variant="outlined">Delete Workouts</Button>
                   </CardActions>
                 </Card>
               </Grid>

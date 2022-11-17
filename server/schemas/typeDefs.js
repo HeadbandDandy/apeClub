@@ -29,6 +29,7 @@ const typeDefs = gql`
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     addWorkout(user_id: String!, exercise_id: String!): Workout
+    deleteWorkout(user_id: String!, exercise_id: String!): Workout
   }
 `;
 module.exports = typeDefs;

@@ -17,11 +17,13 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import red from '@mui/material/colors/red';
 import { QUERY_USER, QUERY_ME } from '../../utils/queries'
 import { useParams } from 'react-router-dom';
-import { useQuery } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 import logo from '../../img/ApeFlexing.png';
 import { ExerciseContext } from '../..';
 // import { DELETE_WORKOUT } from "../../utils/mutations";
 import Auth from '../../utils/auth';
+
+import { DELETE_WORKOUT } from '../../utils/mutations';
 
 
 
@@ -70,14 +72,13 @@ export default function Album() {
    const user = data?.me||data?.user
 console.log(user, exercises);
 
-// const [deleteWorkout] = useMutation(DELETE_WORKOUT)
+const [deleteWorkout] = useMutation(DELETE_WORKOUT)
 
 function savedCards (workoutData, exercises) {
   let cardDataArray = []
     for ( let i = 0; i < workoutData.length; i++) {
       if (cardDataArray.length < 9) {
         const exerciseFilter = exercises.find(obj => {
-          console.log(obj);
           return obj.id === workoutData[i].exercise_id;
         })
         cardDataArray.push(exerciseFilter)
@@ -104,7 +105,13 @@ function savedCards (workoutData, exercises) {
       exercise_id: event.currentTarget.id
     }
   console.log(exercise);
-  
+  const { data } = await deleteWorkout({
+    variables: exercise
+  })
+  console.log(data);
+  const newArr = exerciseArr.filter(workout=> workout.id != exercise.exercise_id);
+  console.log(newArr.length, exerciseArr.length);
+  setExerciseArr(newArr);
 }
   
 
@@ -207,7 +214,7 @@ function savedCards (workoutData, exercises) {
                   </CardContent>
                   <CardActions>
                     <Button size="small">View</Button>
-                    {/* <Button onClick={deleteExercise} id = { card?.id } variant="outlined">Delete Exercise</Button> */}
+                    <Button onClick={deleteExercise} id = { card?.id } variant="outlined">Delete Exercise</Button>
                   </CardActions>
                 </Card>
               </Grid>

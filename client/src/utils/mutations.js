@@ -33,9 +33,12 @@ mutation addWorkout($user_id: String!, $exercise_id: String!) {
 }
 `
 ;
-export const DELETE_WORKOUT = gql`
-mutation deleteWorkout(($user_id: String!, $exercise_id: String!) {
-  addWorkout(user_id: $user_id, exercise_id: $exercise_id) {
-    _id
-    user_id
-    exercise_id)`
+// export const DELETE_WORKOUT = gql`
+// mutation deleteWorkout($user_id: String!, $exercise_id: String!) {
+//   deleteWorkout(user_id: $user_id, exercise_id: $exercise_id) {
+//     _id
+//     user_id
+//     exercise_id)
+//   }
+// }
+// `

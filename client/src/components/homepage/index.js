@@ -20,6 +20,7 @@ import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import logo from '../../img/ApeFlexing.png';
 import { ExerciseContext } from '../..';
+// import { DELETE_WORKOUT } from "../../utils/mutations";
 
 
 
@@ -64,6 +65,8 @@ export default function Album() {
    const user = data?.me||data?.user
 console.log(user, exercises);
 
+// const [deleteWorkout] = useMutation(DELETE_WORKOUT)
+
 function savedCards (workoutData, exercises) {
   let cardDataArray = []
     for ( let i = 0; i < workoutData.length; i++) {
@@ -89,20 +92,14 @@ function savedCards (workoutData, exercises) {
     window.location.assign('/exercises')
   }
 
-  async function deleteExercise() {
+  async function deleteExercise(event) {
+    
     const exercise = {
       user_id: user._id,
-      exercise_id: pageExercises[currentExercise].id
-  }
+      exercise_id: event.currentTarget.id
+    }
   console.log(exercise);
-  try {
-      const { data } = await deleteWorkout({
-      variables: { user_id: user._id, exercise_id: pageExercises[currentExercise].id},
-      });
-      console.log(data)
-  } catch (e) {
-      console.error(e);
-  }
+  
 }
   
 
@@ -184,7 +181,7 @@ function savedCards (workoutData, exercises) {
                   </CardContent>
                   <CardActions>
                     <Button size="small">View</Button>
-                    <Button onClick={viewWorkouts} variant="outlined">Delete Workouts</Button>
+                    {/* <Button onClick={deleteExercise} id = { card?.id } variant="outlined">Delete Exercise</Button> */}
                   </CardActions>
                 </Card>
               </Grid>

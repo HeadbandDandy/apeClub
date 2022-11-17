@@ -21,6 +21,7 @@ import { useQuery } from '@apollo/client';
 import logo from '../../img/ApeFlexing.png';
 import { ExerciseContext } from '../..';
 // import { DELETE_WORKOUT } from "../../utils/mutations";
+import Auth from '../../utils/auth';
 
 
 
@@ -34,6 +35,10 @@ function Logo(){
 
 
 // below we are having an issue in which the console displays empty arrays
+
+
+
+
 
 
 
@@ -104,17 +109,38 @@ function savedCards (workoutData, exercises) {
   
 
    // below belongs to line 35
-
+   const logout = event => {
+    event.preventDefault();
+    Auth.logout();
+  };
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
 
       <AppBar position="relative">
         <Toolbar>
-          <Typography variant="h6" color="black" noWrap>
+
+
+        <Grid container>
+                    <Typography variant="h6" color="black" noWrap>
            <strong> WELCOME TO THE APECLUB!</strong>
 
           </Typography>
+        </Grid>
+
+
+           <Grid container justifyContent="flex-end">
+           <Box>
+            <Typography textAlign={"right"}>
+
+            <Button variant="contained" href="#contained-buttons" onClick={logout}>
+                Sign Out
+            </Button>
+           
+          </Typography>
+           </Box>
+          </Grid>
+
         </Toolbar>
       </AppBar>
       <main>

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
@@ -19,14 +19,21 @@ import { QUERY_USER, QUERY_ME } from '../../utils/queries'
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import logo from '../../img/ApeFlexing.png';
+import { ExerciseContext } from '../..';
 
-//below needs to contain imports for MUI color styling
+
 
 
 //conditionally renders homepage for logged in users
 function Logo(){
   return <img src={logo} className='logo' alt='Muscular ape with hands on hips.'></img>
 }
+
+// below contains the function to get cards to render dynamically
+
+
+// below we are having an issue in which the console displays empty arrays
+
 
 
 function Copyright() {
@@ -41,17 +48,49 @@ function Copyright() {
     </Typography>
   );
 }
+//below goes with function below line 35
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
 const theme = createTheme({palette: {primary: red,},});
 
 export default function Album() {
+  const [ exercises ] = useContext(ExerciseContext);
+  const [ exerciseArr, setExerciseArr ] = useState([]);
+
   const { username: userParam } = useParams();
   const { loading, error, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
      variables: { username: userParam }
    })
-   if(loading) return 'Loading...'
-   if(error) return `Error ${error.message}`
    const user = data?.me||data?.user
+console.log(user, exercises);
+
+function savedCards (workoutData, exercises) {
+  let cardDataArray = []
+    for ( let i = 0; i < workoutData.length; i++) {
+      if (cardDataArray.length < 9) {
+        const exerciseFilter = exercises.find(obj => {
+          console.log(obj);
+          return obj.id === workoutData[i].exercise_id;
+        })
+        cardDataArray.push(exerciseFilter)
+      }
+    }
+  setExerciseArr(cardDataArray);
+  
+  console.log("This what we are lookign for", cardDataArray)
+  
+  }
+  useEffect(() => {savedCards(user?.workouts || [], exercises)},[exercises, user]);
+
+  if(loading) return 'Loading...'
+  if(error) return `Error ${error.message}`
+
+  function viewWorkouts() {
+    window.location.assign('/exercises')
+  }
+
+   // below belongs to line 35
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -87,7 +126,7 @@ export default function Album() {
               ARE YOU READY TO GO APESHIT?
               </div>
             </Typography>
-            <Typography variant="h4" align="center" color="text.primary" paragraph>
+            <Typography variant="h4" align="center" color="red" paragraph>
             {/* check with backend and change $username to correct name and syntax */}
               Hello {user.username}! This page is where you save and view your workouts, as well as view other ape's workouts.
             </Typography>
@@ -97,15 +136,15 @@ export default function Album() {
               spacing={2}
               justifyContent="center"
             >
-              <Button variant="outlined">View Workouts</Button>
+              <Button onClick={viewWorkouts} variant="outlined">View Workouts</Button>
             </Stack>
           </Container>
         </Box>
         <Container sx={{ py: 8 }} maxWidth="md">
           {/* End hero unit */}
           <Grid container spacing={4}>
-            {cards.map((card) => (
-              <Grid item key={card} xs={12} sm={6} md={4}>
+            {exerciseArr.map((card) => (
+              <Grid item key={card?._id} xs={12} sm={6} md={4}>
                 <Card
                   sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
                 >
@@ -115,16 +154,15 @@ export default function Album() {
                       // 16:9
                       pt: '56.25%',
                     }}
-                    image="https://source.unsplash.com/random"
+                    image= {card?.gifUrl}
                     alt="random"
                   />
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography gutterBottom variant="h3" component="h2">
-                      Heading
+                      {card?.name}
                     </Typography>
                     <Typography>
-                      This is a media card. You can use this section to describe the
-                      content.
+                    {card?.bodyPart}
                     </Typography>
                   </CardContent>
                   <CardActions>

@@ -8,8 +8,8 @@ export const QUERY_USER = gql`
       email
       workouts {
         _id
-        name
-        exercises
+        user_id
+        exercise_id
       }
     }
   }
@@ -23,8 +23,8 @@ export const QUERY_ME = gql`
       email
       workouts {
         _id
-        name
-        exercises
+        user_id
+        exercise_id
       }
     }
   }
@@ -34,8 +34,8 @@ export const QUERY_WORKOUTS_BY_USER = gql`
   query workout($user_id: String!) {
     workout(user_id: $user_id) {
         _id
-        name
-        exercises
+        user_id
+        exercise_id
     }
   }
 `

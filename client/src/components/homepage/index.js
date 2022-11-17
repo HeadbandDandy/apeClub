@@ -80,6 +80,9 @@ function savedCards (workoutData, exercises) {
   console.log("This what we are lookign for", cardDataArray)
   
   }
+  
+}
+
   useEffect(() => {savedCards(user?.workouts || [], exercises)},[exercises, user]);
 
   if(loading) return 'Loading...'
@@ -89,7 +92,9 @@ function savedCards (workoutData, exercises) {
     window.location.assign('/exercises')
   }
 
-   // below belongs to line 35
+
+
+
 
   return (
     <ThemeProvider theme={theme}>
@@ -155,7 +160,7 @@ function savedCards (workoutData, exercises) {
                       pt: '56.25%',
                     }}
                     image= {card?.gifUrl}
-                    alt="random"
+                    alt="This contains an exercise you chose"
                   />
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography gutterBottom variant="h3" component="h2">
@@ -167,7 +172,7 @@ function savedCards (workoutData, exercises) {
                   </CardContent>
                   <CardActions>
                     <Button size="small">View</Button>
-                    <Button size="small">Edit</Button>
+                    <Button size="small">Delete</Button>
                   </CardActions>
                 </Card>
               </Grid>

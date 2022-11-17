@@ -89,6 +89,23 @@ function savedCards (workoutData, exercises) {
     window.location.assign('/exercises')
   }
 
+  async function deleteExercise() {
+    const exercise = {
+      user_id: user._id,
+      exercise_id: pageExercises[currentExercise].id
+  }
+  console.log(exercise);
+  try {
+      const { data } = await deleteWorkout({
+      variables: { user_id: user._id, exercise_id: pageExercises[currentExercise].id},
+      });
+      console.log(data)
+  } catch (e) {
+      console.error(e);
+  }
+}
+  }
+
    // below belongs to line 35
 
   return (
@@ -167,7 +184,7 @@ function savedCards (workoutData, exercises) {
                   </CardContent>
                   <CardActions>
                     <Button size="small">View</Button>
-                    <Button size="small">Edit</Button>
+                    <Button size="small">Delete</Button>
                   </CardActions>
                 </Card>
               </Grid>

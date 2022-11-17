@@ -1,5 +1,5 @@
 import logo from '../../img/apeWithArmDumbells.png';
-import auth from '../../utils/auth'
+import auth from '../../utils/auth';
 
 const Exercises = () => {
   return (

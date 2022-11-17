@@ -106,8 +106,6 @@ const router = createBrowserRouter([
 
 ]);
 
-
-
 function App() {
   const [exercises, setExercises] = useState([])
 

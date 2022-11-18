@@ -22,13 +22,14 @@ const typeDefs = gql`
     users: [User]
     user(username: String!): User
     workouts: [Workout]
-    workoutsByUser(user_id: Int): [Workout] 
+    workoutsByUserExercise(user_id: String, exercise_id: String): Workout 
     workout(_id: ID!): Workout  
   }
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     addWorkout(user_id: String!, exercise_id: String!): Workout
+    deleteWorkout(_id: ID!): Workout
   }
 `;
 module.exports = typeDefs;

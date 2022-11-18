@@ -28,10 +28,10 @@ const resolvers = {
       return Workout.find()
         .select('-__v')
     },
-    workoutsByUser: async (parent, { user_id }) => {
-      const params = user_id ? { user_id } : {}
-      return Workout.find(params)
-        .select('-__v')
+    workoutsByUserExercise: async (parent, args) => {
+      const workoutData = await Workout.findOne({ user_id: args.user_id, exercise_id: args.exercise_id })
+      .select('-__v')
+      return workoutData
     },
     workout: async (parent, { _id }) => {
       return Workout.findOne()
@@ -69,18 +69,14 @@ const resolvers = {
 
       //throw new AuthenticationError('You need to be logged in!');
     },
-  //   deleteWorkout: async (parent, args) => {
+    deleteWorkout: async (parent, args) => {
       
-  //     const workout = await Workout.deleteOne()
-  //     await User.findByIdAndUpdate(
-  //       { _id: workout.user_id },
-  //       { $pull: { workouts: workout._id } },
-  //       { new: true }
-  //     );
-  //     return workout
-  //   }
-  // }
+      const workout = await Workout.deleteOne({...args})
+      
+      return workout
+    }
   }
 }
+
 
 module.exports = resolvers;

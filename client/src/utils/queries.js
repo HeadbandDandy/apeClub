@@ -39,3 +39,13 @@ export const QUERY_WORKOUTS_BY_USER = gql`
     }
   }
 `
+
+export const QUERY_WORKOUTS_BY_USER_EXERCISE = gql`
+query workout($user_id: String!, $exercise_id: String!) {
+  workoutsByUserExercise(user_id: $user_id, exercise_id: $exercise_id) {
+      _id
+      user_id
+      exercise_id
+  }
+}
+`

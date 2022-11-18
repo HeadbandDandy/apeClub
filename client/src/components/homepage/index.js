@@ -24,6 +24,8 @@ import Auth from '../../utils/auth';
 import { QUERY_WORKOUTS_BY_USER_EXERCISE} from '../../utils/queries'
 import { DELETE_WORKOUT } from '../../utils/mutations';
 
+import { DELETE_WORKOUT } from '../../utils/mutations';
+
 
 
 
@@ -85,6 +87,7 @@ function savedCards (workoutData, exercises) {
     for ( let i = 0; i < workoutData.length; i++) {
       if (cardDataArray.length < 9) {
         const exerciseFilter = exercises.find(obj => {
+          console.log(obj);
           return obj.id === workoutData[i].exercise_id;
         })
         cardDataArray.push(exerciseFilter)
@@ -110,13 +113,14 @@ function savedCards (workoutData, exercises) {
       user_id: user._id,
       exercise_id: event.currentTarget.id
     }
-    try {
-      workoutUser({
-      variables: { user_id: exercise.user_id, exercise_id: exercise.exercise_id},
-      });
-  } catch (e) {
-      console.error(e);
-  }  
+  console.log(exercise);
+  const { data } = await deleteWorkout({
+    variables: exercise
+  })
+  console.log(data);
+  const newArr = exerciseArr.filter(workout=> workout.id != exercise.exercise_id);
+  console.log(newArr.length, exerciseArr.length);
+  setExerciseArr(newArr);
 }
   
 

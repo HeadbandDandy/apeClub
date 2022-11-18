@@ -34,8 +34,8 @@ mutation addWorkout($user_id: String!, $exercise_id: String!) {
 `
 ;
 export const DELETE_WORKOUT = gql`
-mutation deleteWorkout($_id: ID!) {
-  deleteWorkout(_id: $_id) {
+mutation deleteWorkout($user_id: String!, $exercise_id: String!) {
+  deleteWorkout(user_id: $user_id, exercise_id: $exercise_id) {
     _id
     user_id
     exercise_id

@@ -70,12 +70,18 @@ const resolvers = {
       //throw new AuthenticationError('You need to be logged in!');
     },
     deleteWorkout: async (parent, args) => {
-      
-      const workout = await Workout.deleteOne({...args})
-      
+      const workout = await Workout.findOne({exercise_id: args.exercise_id});  
+      await Workout.deleteOne({exercise_id: args.exercise_id})
+      console.log(workout)
+      await User.findByIdAndUpdate(
+        { _id: args.user_id },
+        { $pull: { workouts: workout._id } },
+        { new: true }
+      );
       return workout
     }
   }
+  
 }
 
 
